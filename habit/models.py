@@ -42,7 +42,7 @@ class Habits(models.Model):
         max_length=100, verbose_name="prize", help_text="Награда после выполнения"
     )
     lead_time = models.PositiveSmallIntegerField(
-        max_length=100, verbose_name="lead_time", help_text="Время на выполнение"
+        verbose_name="lead_time", help_text="Время на выполнение"
     )
     is_published = models.BooleanField(
         default=True, verbose_name="Публикация в общий доступ"

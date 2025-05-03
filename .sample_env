@@ -5,3 +5,10 @@ SU_email=
 SU_first_name=
 SU_last_name=
 SU_password=
+
+
+NAME=
+USER=
+PASSWORD=
+HOST=
+PORT=
