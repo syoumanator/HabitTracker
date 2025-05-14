@@ -8,7 +8,7 @@ app_name = UsersConfig.name
 
 
 urlpatterns = [
-    path("register/", UserCreateAPIView.as_view(), name="register-user"),
+    path("register/", UserCreateAPIView.as_view(), name="register"),
     path("<int:pk>/", UserRetrieveAPIView.as_view(), name="user-detail"),
     path("<int:pk>/update/", UserUpdateAPIView.as_view(), name="user-update"),
     path("<int:pk>/delete/", UserDestroyAPIView.as_view(), name="delete"),
