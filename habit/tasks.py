@@ -14,7 +14,6 @@ def telegram_notice():
         time__gte=(datetime.now(zone) - timedelta(minutes=5)).time()
     )
     for habit in habits:
-        user_tg = habit.user.tg_chat_id
-        if user_tg:
+        if habit.user.tg_chat_id:
             message = f"Я буду {habit.action} в {habit.time} в {habit.place}"
-            message_telegram()
+            message_telegram(message, habit.user.tg_chat_id)
