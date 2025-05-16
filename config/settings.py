@@ -1,7 +1,7 @@
 import os
 from datetime import timedelta
-
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -22,10 +22,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "django_celery_beat",
-    'drf_yasg',
+    "drf_yasg",
     "corsheaders",
-    'users',
-    'habit',
+    "users",
+    "habit",
 ]
 
 MIDDLEWARE = [
@@ -39,15 +39,15 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
@@ -72,16 +72,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -92,7 +92,6 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-
 }
 
 
@@ -101,8 +100,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
@@ -115,8 +114,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:8000"] #Замените на адрес вашего фронтенд-сервера
-# CSRF_TRUSTED_ORIGINS = ["https://read-and-write.example.com"] # Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000"
+]  # Замените на адрес вашего фронтенд-сервера
+# CSRF_TRUSTED_ORIGINS = ["https://read-and-write.example.com"]
+# Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
 CORS_ALLOW_ALL_ORIGINS = False
 
 CELERY_TIMEZONE = TIME_ZONE
@@ -135,4 +137,3 @@ CELERY_BEAT_SCHEDULE = {
 }
 TG_URL = os.getenv("TG_URL")
 TG_TOKEN = os.getenv("TG_TOKEN")
-

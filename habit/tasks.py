@@ -1,8 +1,10 @@
+from datetime import datetime, timedelta
+
+import pytz
 from celery import shared_task
 from django.conf import settings
-from datetime import datetime, timedelta
+
 from habit.models import Habits
-import pytz
 from habit.services import message_telegram
 
 
@@ -11,7 +13,7 @@ def telegram_notice():
     zone = pytz.timezone(settings.TIME_ZONE)
     habits = Habits.objects.filter(
         time__lte=(datetime.now(zone)).time(),
-        time__gte=(datetime.now(zone) - timedelta(minutes=5)).time()
+        time__gte=(datetime.now(zone) - timedelta(minutes=5)).time(),
     )
     for habit in habits:
         if habit.user.tg_chat_id:

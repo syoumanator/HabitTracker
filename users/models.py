@@ -4,7 +4,9 @@ from django.db import models
 
 class User(AbstractUser):
     username = None
-    email = models.EmailField(unique=True, verbose_name="Почта", help_text="Введите адрес электронной почты")
+    email = models.EmailField(
+        unique=True, verbose_name="Почта", help_text="Введите адрес электронной почты"
+    )
     phone_number = models.CharField(
         max_length=20,
         verbose_name="Телефон",
@@ -19,8 +21,16 @@ class User(AbstractUser):
         null=True,
         blank=True,
     )
-    avatar = models.ImageField(upload_to="users/avatars", verbose_name="Аватар", null=True, blank=True)
-    tg_chat_id = models.CharField(max_length=50, verbose_name="Chat-ID Telegram", help_text="Введите Chat-ID Telegram", blank=True, null=True)
+    avatar = models.ImageField(
+        upload_to="users/avatars", verbose_name="Аватар", null=True, blank=True
+    )
+    tg_chat_id = models.CharField(
+        max_length=50,
+        verbose_name="Chat-ID Telegram",
+        help_text="Введите Chat-ID Telegram",
+        blank=True,
+        null=True,
+    )
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 

@@ -32,4 +32,3 @@ class UserAPITestCase(APITestCase):
         """Удаление пользователя"""
         response = self.client.delete(f"/users/{self.user.pk}/delete/")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
