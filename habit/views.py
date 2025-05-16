@@ -20,7 +20,6 @@ class HabitsListAPIView(generics.ListAPIView):
     queryset = Habits.objects.all()
     pagination_class = HabitPagination
 
-
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
