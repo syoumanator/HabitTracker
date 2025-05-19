@@ -5,3 +5,15 @@ SU_email=
 SU_first_name=
 SU_last_name=
 SU_password=
+
+
+NAME=
+USER=
+PASSWORD=
+HOST=
+PORT=
+
+CELERY_BROKER_URL=
+CELERY_RESULT_BACKEND=
+TG_TOKEN=
+TG_URL=
