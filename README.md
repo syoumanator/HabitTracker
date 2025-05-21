@@ -6,20 +6,44 @@
 * Клонируйте репозиторий
 
 ```bash
-  https://github.com/syoumanator/HabitTracker.git
+https://github.com/syoumanator/HabitTracker.git
   ```
 
 * Установите зависимости
 
 ```bash
-      pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 * Создайте файл .env и заполните по образцу .sample_env
-## Запуск
+
+* Чтобы запустить, введите команду:
 
 ```bash
-  python manage.py runserver 
+python manage.py runserver 
 ```
+
+## Установка с Docker:
+
+* Клонируйте репозиторий
+
+```bash
+https://github.com/syoumanator/HabitTracker.git
+  ```
+* Установите зависимости
+
+```bash
+pip install -r requirements.txt
+```
+
+* Создайте файл .env и заполните по образцу .sample_env
+
+* Чтобы запустить, введите команду:
+
+```bash
+docker-compose up -d 
+```
+
+
 # Структура проекта:
 ## Описаны модели для пользователей (Users),
 ## Описаны модели привычек (Habits),
