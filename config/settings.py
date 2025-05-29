@@ -130,7 +130,7 @@ CORS_ALLOWED_ORIGINS = [
 ]  # Замените на адрес вашего фронтенд-сервера
 # Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
 CORS_ALLOW_ALL_ORIGINS = False
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.53", "http://158.160.136.48"]
+CSRF_TRUSTED_ORIGINS = ["http://10.130.0.22", "http://158.160.136.48"]
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
