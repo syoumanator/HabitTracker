@@ -60,7 +60,7 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/habit:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/habit:latest .
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/habit:latest
 
   deploy:
     runs-on: ubuntu-latest
