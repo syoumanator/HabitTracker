@@ -1,4 +1,5 @@
 import os
+import sys
 from datetime import timedelta
 from pathlib import Path
 
@@ -10,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True if os.getenv("DEBUG") else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -59,16 +60,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "POSTGRES_DB": os.getenv("POSTGRES_DB"),
-        "POSTGRES_USER": os.getenv("POSTGRES_USER"),
-        "POSTGRES_PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "POSTGRES_HOST": os.getenv("POSTGRES_HOST"),
-        "POSTGRES_PORT": os.getenv("POSTGRES_PORT"),
+if "test" in sys.argv:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            "NAME": os.getenv("POSTGRES_DB"),
+            "USER": os.getenv("POSTGRES_USER"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+            "HOST": os.getenv("POSTGRES_HOST"),
+            "PORT": os.getenv("POSTGRES_PORT"),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,7 +114,9 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -117,10 +128,9 @@ AUTH_USER_MODEL = "users.User"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000"
 ]  # Замените на адрес вашего фронтенд-сервера
-# CSRF_TRUSTED_ORIGINS = ["https://read-and-write.example.com"]
 # Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
 CORS_ALLOW_ALL_ORIGINS = False
-
+# CSRF_TRUSTED_ORIGINS = ["http://130.193.35.57"]
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
